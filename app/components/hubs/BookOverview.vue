@@ -52,8 +52,7 @@
             <img
               v-if="!isWaiting"
               class="img-fluid"
-              v-lazy-load
-              :data-src="bookCover"
+              :src="bookCover"
               :alt="title"
             />
 
@@ -91,9 +90,8 @@
           <div class="col-lg-6">
             <div class="shadow p-4 border my-4" style="max-width: 500px">
               <img
-                v-lazy-load
                 class="img-fluid cover"
-                :data-src="animatedBookCover"
+                :src="animatedBookCover"
                 :alt="title"
               />
             </div>

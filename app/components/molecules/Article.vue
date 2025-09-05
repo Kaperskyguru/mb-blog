@@ -20,12 +20,7 @@
             <div
               class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
             >
-              <img
-                v-lazy-load
-                class="img-fluid cover"
-                :data-src="image"
-                :alt="post.title"
-              />
+              <img class="img-fluid cover" :src="image" :alt="post.title" />
             </div>
             <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
               <article

@@ -61,16 +61,14 @@
                 <img
                   v-else-if="isDocker"
                   class="img-fluid"
-                  v-lazy-load
-                  data-src="https://public-files.gumroad.com/4b4q5j1x03zq6t19w7wnxizu5048"
+                  src="https://public-files.gumroad.com/4b4q5j1x03zq6t19w7wnxizu5048"
                   alt="Docker PDF"
                 />
 
                 <img
                   v-else
                   class="img-fluid"
-                  v-lazy-load
-                  data-src="https://strapi-images-aws-s3.s3.us-west-2.amazonaws.com/1694963417_e55e6533b9.png?updated_at=2023-09-17T16:31:10.286Z"
+                  src="https://strapi-images-aws-s3.s3.us-west-2.amazonaws.com/1694963417_e55e6533b9.png?updated_at=2023-09-17T16:31:10.286Z"
                   alt="Laravel breeze PDF"
                 />
               </div>
@@ -99,12 +97,7 @@
             <!-- Left image -->
             <div class="col-lg-6">
               <div class="shadow p-4 border my-4" style="max-width: 500px">
-                <img
-                  v-lazy-load
-                  class="img-fluid cover"
-                  :data-src="image"
-                  :alt="title"
-                />
+                <img class="img-fluid cover" :src="image" :alt="title" />
               </div>
             </div>
 

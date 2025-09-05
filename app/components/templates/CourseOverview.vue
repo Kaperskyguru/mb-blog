@@ -31,8 +31,7 @@
             <img
               v-else
               class="img-fluid"
-              v-lazy-load
-              :data-src="bookCover"
+              :src="bookCover"
               :alt="title"
               srcset=""
             />

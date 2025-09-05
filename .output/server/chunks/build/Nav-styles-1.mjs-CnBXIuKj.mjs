@@ -1,4 +1,0 @@
-const Nav_vue_vue_type_style_index_0_scoped_ab137085_lang = '.navbar .navbar-nav .nav-item a[data-v-ab137085]{font-size:1rem;font-weight:500}.navbar .nav-item[data-v-ab137085]:after{background-color:var(--primary-color);content:"";display:block;height:4px;transition:all .3s ease;width:0}.navbar .nav-item[data-v-ab137085]:hover:after{width:100%}.navbar .nav-item[data-v-ab137085]{padding-right:30px}.navbar .navbar-nav .active a[data-v-ab137085]{-webkit-background-clip:text;background-clip:text;background-color:#0a083b;background:text;font-weight:700}.navbar .navbar-nav .nav-item a[data-v-ab137085]:hover{color:#0a083b}.nav-link[data-v-ab137085]{color:#57586e;font-size:.8rem}.start-btn[data-v-ab137085]{background:#191489;border:none;border-radius:8px;color:#fff;transition:all .3s ease}.start-btn[data-v-ab137085]:hover{background-color:#2119ad}';
-
-export { Nav_vue_vue_type_style_index_0_scoped_ab137085_lang as N };
-//# sourceMappingURL=Nav-styles-1.mjs-CnBXIuKj.mjs.map
