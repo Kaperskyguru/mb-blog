@@ -1,0 +1,4 @@
+const hub_vue_vue_type_style_index_0_lang = ".notif{background-color:#facc15;display:flex;justify-content:center;padding:10px;position:sticky;top:0;z-index:91}body{background:#f1f1f1;color:#000;font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif!important;overflow-x:hidden}";
+
+export { hub_vue_vue_type_style_index_0_lang as h };
+//# sourceMappingURL=hub-styles-1.mjs-to5tbXVG.mjs.map
