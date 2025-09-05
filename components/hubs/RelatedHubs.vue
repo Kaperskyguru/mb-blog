@@ -7,7 +7,7 @@
     </div>
     <div class="row g-4">
       <NuxtLink
-        :to="`/hubs/${hub.slug}`"
+        :to="`/${hub.slug}`"
         class="col-lg-4"
         v-for="hub in hubs"
         :key="hub.id"

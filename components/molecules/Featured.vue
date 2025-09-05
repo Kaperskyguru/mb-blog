@@ -74,7 +74,7 @@ export default {
     email: '',
     res: {},
     show: false,
-    ur: '/hubs/backend-engineering',
+    ur: '/backend-engineering',
   }),
 
   props: {
@@ -104,7 +104,7 @@ export default {
       console.error(e)
     }
 
-    // window.CustomSubstackWidget.link = '/hubs/backend-engineering'
+    // window.CustomSubstackWidget.link = '/backend-engineering'
   },
 
   beforeDestroy() {
@@ -134,7 +134,7 @@ export default {
       this.show = true
 
       if (!res.type.includes('danger')) {
-        return this.$router.push('/hubs/backend-engineering')
+        return this.$router.push('/backend-engineering')
       }
       this.res = res
     },

@@ -152,7 +152,7 @@ export default {
     getURL() {
       return this.isPDF
         ? `/resources/${this.slug}/${this.firstLink}`
-        : `/hubs/${this.slug}/${this.firstLink}`
+        : `/${this.slug}/${this.firstLink}`
     },
 
     isPDF() {

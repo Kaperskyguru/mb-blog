@@ -203,7 +203,7 @@
 
 <script>
 import Vue from 'vue'
-import CustomAlert from '../molecules/CustomAlert.vue'
+import CustomAlert from './CustomAlert.vue'
 import Segment from '~/helpers/segment'
 import {
   OPEN_PREMIUM,

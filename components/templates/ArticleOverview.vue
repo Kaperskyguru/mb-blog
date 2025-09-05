@@ -180,7 +180,7 @@ export default {
 
     generateURL() {
       if (this.isHub)
-        return `/hubs/${this.chapter?.hub?.slug ?? '#'}/${this.parentPostSlug}`
+        return `/${this.chapter?.hub?.slug ?? '#'}/${this.parentPostSlug}`
 
       return `/posts/${this.parentPostSlug}#${this.chapter.slug}`
     },

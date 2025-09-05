@@ -231,10 +231,11 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
-      '~/components/atoms',
-      '~/components/molecules',
-      '~/components/organisms',
-      '~/components/templates',
+      // '~/components/atoms',
+      // '~/components/molecules',
+      // '~/components/organisms',
+      // '~/components/templates',
+      '~/components/hubs',
     ],
   },
 
@@ -387,7 +388,7 @@ export default {
     },
     {
       from: '^/courses/text/advanced-docker(.*)$',
-      to: '/hubs/advanced-docker',
+      to: '/advanced-docker',
       statusCode: 301,
     },
 
@@ -405,7 +406,7 @@ export default {
 
     {
       from: '^/courses/video/advanced-docker(.*)$',
-      to: '/hubs/advanced-docker',
+      to: '/advanced-docker',
       statusCode: 301,
     },
     {

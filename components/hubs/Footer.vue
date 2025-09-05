@@ -30,7 +30,7 @@
                       <NuxtLink to="/books">Books</NuxtLink>
                     </li>
                     <li class="mb-3">
-                      <NuxtLink to="/hubs">Hubs</NuxtLink>
+                      <NuxtLink to="/">Hubs</NuxtLink>
                     </li>
                     <li>
                       <a
@@ -204,8 +204,6 @@
         </small>
       </div>
     </footer>
-    <Login v-if="showLogin"></Login>
-    <Register v-if="showRegister"></Register>
   </div>
 </template>
 

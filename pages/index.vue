@@ -1,34 +1,49 @@
 <template>
-  <HomeOverview />
+  <HubsOverview :hubs="hubs" />
 </template>
-
-<script>
+  
+  <script>
 export default {
-  name: 'IndexPage',
+  name: 'HubIndex',
+  layout: 'hub',
+
+  async asyncData({ query, store }) {
+    try {
+      const getHubs = store.getters['hubs/getHubs']
+      let hubs = await getHubs()
+      if (!hubs?.length) {
+        const data = {}
+        data.page = query.page ? query.page : 1
+        data.count = 22
+        hubs = await store.dispatch('hubs/getHubs', data)
+      }
+
+      return { hubs }
+    } catch (error) {
+      console.log(error)
+      const hubs = []
+      return { hubs }
+    }
+  },
 
   head() {
     return {
-      title:
-        'Learn Backend Engineering, JavaScript, Node.js, PHP, Java, Rust, Ruby and System Design',
-      titleTemplate: null,
+      title: 'Hubs',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content:
-            'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
+          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content:
-            'Learn Backend Engineering, JavaScript, Node.js, PHP, Java, Rust, Ruby and System Design',
+          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
+          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
         },
         {
           hid: 'twitter:card',
@@ -40,3 +55,6 @@ export default {
   },
 }
 </script>
+  
+  <style scoped>
+</style>

@@ -42,9 +42,9 @@
               >Books</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/hubs') }">
+          <li class="nav-item" :class="{ active: isActive('/') }">
             <a
-              :href="`/hubs?ref=${$route.query?.ref ?? 'homepage'}`"
+              :href="`/?ref=${$route.query?.ref ?? 'homepage'}`"
               class="links nav-link"
               >Hubs</a
             >

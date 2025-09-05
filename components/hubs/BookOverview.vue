@@ -188,7 +188,7 @@ export default {
 
     link() {
       if (this.isPremium) return this.linkToPay
-      return `/hubs/${this.slug}` // TODO:: change URL to `books` instead of `hubs`
+      return `/${this.slug}` // TODO:: change URL to `books` instead of `hubs`
     },
 
     linkToPay() {

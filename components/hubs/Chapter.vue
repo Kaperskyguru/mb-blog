@@ -170,7 +170,7 @@ export default {
     },
 
     getBaseURL() {
-      return this.isPDF ? `/resources` : `/hubs`
+      return this.isPDF ? `/resources` : `/`
     },
 
     outlines() {

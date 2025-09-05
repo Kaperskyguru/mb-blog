@@ -37,7 +37,7 @@ export default {
 
   computed: {
     getBaseURL() {
-      return `${this.BASE_URL}/hubs`
+      return `${this.BASE_URL}/`
     },
   },
 

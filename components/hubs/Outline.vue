@@ -53,7 +53,7 @@ export default {
   computed: {
     getBaseURL() {
       if (this.$route?.name?.includes('resources-hub-slug')) return `/resources`
-      return `/hubs`
+      return `/`
     },
   },
 

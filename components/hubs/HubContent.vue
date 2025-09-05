@@ -78,9 +78,7 @@ export default {
       )
     },
     showReadMore() {
-      return (
-        this.post?.chapters?.length > 0 && this.$route.path.startsWith('/hubs/')
-      )
+      return this.post?.chapters?.length > 0 && this.$route.path.startsWith('/')
     },
     generateReadLink() {
       if (this.isBook) {
