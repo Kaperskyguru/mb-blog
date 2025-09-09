@@ -4,12 +4,11 @@
     :style="{ background: `${color}` }"
     :class="{ 'text-center py-4': isChapter }"
   >
-    <div class="container">
+    <div class="max-w-7xl mx-auto">
       <div
         class="py-4"
         :class="{
-          'd-flex flex-row align-items-center justify-content-start':
-            !isChapter,
+          'flex flex-row items-center justify-start': !isChapter,
         }"
       >
         <span>
@@ -27,13 +26,14 @@
             />
           </svg>
         </span>
-        <span class="text-white fs-2 px-2">
+        <span class="text-white text-2xl px-2">
           {{ title }}
         </span>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {

@@ -1,38 +1,37 @@
 <template>
-  <div class="left-col">
+  <aside class="left-col">
     <p class="fs-6 py-1 text-uppercase" :style="{ color }">
       {{ outlines.length }} Resources
     </p>
 
-    <li
-      v-for="(outline, i) in outlines"
-      :key="i"
-      style="list-style: none"
-      class="lh-lg"
-      :style="[
-        { color: '#57586E' },
-        isActive(outline) ? { color: '#000000' } : '',
-      ]"
-    >
-      <a
-        class="d-flex flex-row justify-content-start"
-        :href="`${getBaseURL}/${route.params.hub}/${outline.slug}`"
+    <ul class="list-unstyled">
+      <li
+        v-for="(outline, i) in outlines"
+        :key="i"
+        class="lh-lg"
+        :class="{ 'active-resource': isActive(outline) }"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          :fill="color"
-          width="24"
-          height="24"
+        <a
+          class="d-flex flex-row align-items-center gap-2 text-decoration-none"
+          :href="`${getBaseURL}/${route.params.hub}/${outline.slug}`"
         >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path d="M16 12l-6 6V6z" />
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            :fill="color"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16 12l-6 6V6z" />
+          </svg>
 
-        <span>{{ outline.title }}</span>
-      </a>
-    </li>
-  </div>
+          <span>{{ outline.title }}</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 </template>
 
 <script setup>
@@ -61,5 +60,19 @@ const getBaseURL = computed(() =>
 const isActive = (outline) => outline.slug === route.params.slug
 </script>
 
-<style>
+<style scoped>
+.list-unstyled {
+  padding-left: 0;
+  margin: 0;
+}
+
+.lh-lg {
+  line-height: 1.6;
+  color: #57586e;
+}
+
+.active-resource {
+  color: #000000;
+  font-weight: 600;
+}
 </style>

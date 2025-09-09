@@ -1,60 +1,55 @@
 <template>
-  <div class="shadow-sm">
-    <div class="container d-flex align-items-center flex-row py-3 flex-wrap">
+  <nav class="shadow-sm" aria-label="breadcrumb">
+    <div
+      class="container d-flex align-items-center flex-row py-3 flex-wrap"
+      :style="{ color }"
+    >
       <!-- Hub link -->
-      <a :href="`${getBaseURL}/${route.params.hub}`">
-        <p :style="{ color }" class="fs-5">
-          {{ hub.title }}
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              :fill="color"
-              width="24"
-              height="24"
-            >
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M16 12l-6 6V6z" />
-            </svg>
-          </span>
-        </p>
+      <a :href="`${getBaseURL}/${route.params.hub}`" class="breadcrumb-link">
+        {{ hub.title }}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          :fill="color"
+          width="20"
+          height="20"
+          aria-hidden="true"
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M16 12l-6 6V6z" />
+        </svg>
       </a>
 
       <!-- Chapter link -->
       <a
         v-if="postTitle"
-        class="fs-5"
         :href="`${getBaseURL}/${route.params.hub}/${chapter.slug}`"
+        class="breadcrumb-link"
+        :style="{ color }"
       >
-        <p :style="{ color }" class="fs-5">
-          {{ title }}
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              :fill="color"
-              width="24"
-              height="24"
-            >
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M16 12l-6 6V6z" />
-            </svg>
-          </span>
-        </p>
+        {{ title }}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          :fill="color"
+          width="20"
+          height="20"
+          aria-hidden="true"
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M16 12l-6 6V6z" />
+        </svg>
       </a>
 
       <!-- Fallback title -->
-      <p v-else class="fs-5">
-        {{ title }}
-        <span class="mx-4"></span>
-      </p>
+      <span v-else class="breadcrumb-text">{{ title }}</span>
 
       <!-- Post title -->
-      <p v-if="postTitle" class="fs-5" style="color: #57586e">
+      <span v-if="postTitle" class="breadcrumb-text text-muted">
         {{ postTitle }}
-      </p>
+      </span>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup>
@@ -92,5 +87,16 @@ const postTitle = computed(() => props.post?.title ?? '')
 </script>
 
 <style>
-/* optional custom styles */
+.breadcrumb-link {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.breadcrumb-text {
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
 </style>

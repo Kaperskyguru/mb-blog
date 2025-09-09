@@ -1,8 +1,8 @@
 <template>
-  <div class="row bg-white mb-5 shadow">
+  <div class="flex flex-col xl:flex-row bg-white mb-5 shadow">
     <!-- Left Section -->
     <div
-      class="col-xl-3 col-lg-12 text-center text-white"
+      class="xl:w-1/4 w-full text-center text-white"
       :style="{ backgroundColor: color }"
     >
       <NuxtLink
@@ -13,8 +13,12 @@
             : { path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}` }
         "
       >
-        <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
-        <img class="img-fluid hub mt-3" :src="getDesign" :alt="chapter.title" />
+        <h3 class="py-5 font-semibold text-xl">{{ chapter.title }}</h3>
+        <img
+          class="max-w-full h-auto mx-auto mt-3"
+          :src="getDesign"
+          :alt="chapter.title"
+        />
       </NuxtLink>
 
       <NuxtLink
@@ -25,29 +29,33 @@
             : { path: `${getBaseURL}/${chapterSlug}/${chapter.slug}` }
         "
       >
-        <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
-        <img class="img-fluid hub mt-3" :src="getDesign" :alt="chapter.title" />
+        <h3 class="p-5 font-semibold text-xl">{{ chapter.title }}</h3>
+        <img
+          class="max-w-full h-auto mx-auto mt-3"
+          :src="getDesign"
+          :alt="chapter.title"
+        />
       </NuxtLink>
     </div>
 
     <!-- Right Section -->
-    <div class="col-xl-9 col-lg-12">
-      <div class="row py-5 px-4">
-        <div class="col-12 row">
+    <div class="xl:w-3/4 w-full">
+      <div class="flex flex-col py-5 px-4">
+        <div class="flex flex-wrap w-full">
           <!-- Description -->
-          <div class="col-lg-6">
-            <h5 class="font-weight-normal fs-4 pb-4" :style="{ color }">
+          <div class="w-full lg:w-1/2">
+            <h5 class="font-bold text-xl pb-4" :style="{ color }">
               What you will learn
             </h5>
             <p
-              class="lh-lg font-weight-light fs-5"
+              class="leading-loose font-normal text-lg"
               v-html="chapter.description"
             ></p>
           </div>
 
           <!-- Resources / Outline -->
-          <div class="col-lg-6">
-            <h5 class="font-weight-normal fs-4 pb-4" :style="{ color }">
+          <div class="w-full lg:w-1/2">
+            <h5 class="font-bold text-xl pb-4" :style="{ color }">
               <span v-if="isPDF">Outline</span>
               <span v-else>{{ postCount }} Resources</span>
             </h5>
@@ -55,12 +63,12 @@
             <!-- Outline (PDF) -->
             <span
               v-if="isPDF"
-              class="overflow-auto d-flex flex-column justify-content-between"
+              class="overflow-auto flex flex-col justify-between"
               style="height: 300px"
             >
               <p v-for="(outline, i) in outlines" :key="i">
                 <NuxtLink
-                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                  class="font-normal flex flex-row justify-start text-lg"
                   :to="
                     shouldActivateWaitingList || isPDF || isPremium
                       ? '#'
@@ -79,7 +87,7 @@
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M16 12l-6 6V6z" />
                   </svg>
-                  <span class="flex-fill" v-html="outline"></span>
+                  <span class="flex-1" v-html="outline"></span>
                 </NuxtLink>
               </p>
             </span>
@@ -88,7 +96,7 @@
             <span v-else>
               <p v-for="(post, i) in chapter.posts" :key="i">
                 <NuxtLink
-                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                  class="font-normal flex flex-row justify-start text-lg"
                   :to="
                     shouldActivateWaitingList || isPremium
                       ? '#'
@@ -105,7 +113,7 @@
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M16 12l-6 6V6z" />
                   </svg>
-                  <span class="flex-fill">{{ post.title }}</span>
+                  <span class="flex-1">{{ post.title }}</span>
                 </NuxtLink>
               </p>
             </span>
@@ -113,9 +121,9 @@
         </div>
 
         <!-- CTA -->
-        <div class="col-12 align-self-end" v-if="isPDF">
+        <div class="w-full self-end" v-if="isPDF">
           <Button
-            class="btn-block"
+            class="w-full"
             size="large"
             type="link"
             :link="`${getBaseURL}/${chapterSlug}/${firstPostSlug}`"

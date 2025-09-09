@@ -1,45 +1,51 @@
 <template>
-  <div
-    style="
-      background-color: #f7f5fa;
-      width: 100% !important;
-      min-height: auto;
-      margin: 20rem 0px;
-    "
-  >
+  <div class="w-full bg-[#f7f5fa] my-[20rem]">
+    <!-- 404 Page -->
     <div v-if="error.statusCode === 404">
-      <div class="page-wrap d-flex flex-row align-items-center">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-              <span class="display-1 d-block">404</span>
-              <div class="mb-4 lead">
+      <div class="flex flex-row items-center">
+        <div class="container mx-auto">
+          <div class="flex justify-center">
+            <div class="w-full text-center">
+              <span class="block text-9xl font-bold">404</span>
+              <div class="mb-4 text-lg text-gray-700">
                 The page you are looking for was not found.
               </div>
-              <nuxt-link to="/" class="btn btn-link">Back to Home</nuxt-link>
+              <NuxtLink
+                to="/"
+                class="text-blue-600 hover:underline font-medium"
+              >
+                Back to Home
+              </NuxtLink>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <h1 v-if="error.statusCode !== 404">
-      <div class="page-wrap d-flex flex-row align-items-center">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-              <span class="display-1 d-block">500</span>
-              <div class="mb-4 lead">
+
+    <!-- 500 / Other Errors -->
+    <div v-else>
+      <div class="flex flex-row items-center">
+        <div class="container mx-auto">
+          <div class="flex justify-center">
+            <div class="w-full text-center">
+              <span class="block text-9xl font-bold">500</span>
+              <div class="mb-4 text-lg text-gray-700">
                 An error occurred, please reload the page
               </div>
-              <nuxt-link to="/" class="btn btn-link">Back to Home</nuxt-link>
+              <NuxtLink
+                to="/"
+                class="text-blue-600 hover:underline font-medium"
+              >
+                Back to Home
+              </NuxtLink>
             </div>
           </div>
         </div>
       </div>
-    </h1>
+    </div>
   </div>
 </template>
-  
+
   <script>
 export default {
   name: 'errorPage',

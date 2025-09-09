@@ -1,95 +1,132 @@
 <template>
-  <nav class="navbar navbar-expand-xl pt-3">
-    <div class="container">
+  <nav class="pt-3">
+    <div class="container mx-auto flex items-center justify-between">
       <Logo />
 
       <button
         @click="show = !show"
-        class="navbar-toggler"
+        class="xl:hidden p-2 border rounded-md"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="block w-6 h-0.5 bg-gray-600 mb-1"></span>
+        <span class="block w-6 h-0.5 bg-gray-600 mb-1"></span>
+        <span class="block w-6 h-0.5 bg-gray-600"></span>
       </button>
+
       <div
         id="nav-menu"
-        class="collapse navbar-collapse"
-        :class="{ show: show }"
+        class="hidden xl:flex xl:items-center xl:space-x-6"
+        :class="{ 'flex flex-col mt-4 xl:mt-0': show }"
       >
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item" :class="{ active: isActive('/posts') }">
+        <ul class="flex flex-col xl:flex-row xl:items-center">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/posts'),
+            }"
+          >
             <a
               :href="`/posts?ref=${$route.query?.ref ?? 'homepage'}`"
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               >Blog</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/courses') }">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/courses'),
+            }"
+          >
             <a
               :href="`/courses?ref=${$route.query?.ref ?? 'homepage'}`"
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               >Courses</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/books') }">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/books'),
+            }"
+          >
             <a
               :href="`/books?ref=${$route.query?.ref ?? 'homepage'}`"
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               >Books</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/') }">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/'),
+            }"
+          >
             <a
               :href="`/?ref=${$route.query?.ref ?? 'homepage'}`"
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               >Hubs</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/podcasts') }">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/podcasts'),
+            }"
+          >
             <a
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               target="_blank"
               href="https://backendweekly.dev/podcasts?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
               >Podcasts</a
             >
           </li>
-          <li class="nav-item">
+          <li class="relative pr-7">
             <a
-              class="links nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               target="_blank"
               href="https://store.masteringbackend.com"
               >Our Store</a
             >
           </li>
-          <li class="nav-item" :class="{ active: isActive('/community') }">
+          <li
+            class="relative pr-7"
+            :class="{
+              'font-bold text-transparent bg-clip-text bg-[#0a083b]':
+                isActive('/community'),
+            }"
+          >
             <a
               :href="`/community?ref=${$route.query?.ref ?? 'homepage'}`"
-              class="nav-link"
+              class="text-gray-600 text-sm font-medium hover:text-[#0a083b] transition-colors"
               >Community</a
             >
           </li>
         </ul>
-        <div class="ms-5 d-flex">
-          <div>
-            <a
-              target="_blank"
-              :href="`https://app.masteringbackend.com?ref=${
-                $route.query?.ref ?? 'homepage'
-              }`"
-              class="start-btn px-3 py-3"
-            >
-              Learn Backend Free
-            </a>
-          </div>
+
+        <div class="flex pb-3">
+          <a
+            target="_blank"
+            :href="`https://app.masteringbackend.com?ref=${
+              $route.query?.ref ?? 'homepage'
+            }`"
+            class="bg-[#0e1f33] !text-white rounded-lg px-3 py-3 transition-colors"
+          >
+            Learn Backend Free
+          </a>
         </div>
       </div>
     </div>
   </nav>
 </template>
+
 
 <script>
 export default {
@@ -107,7 +144,7 @@ export default {
 </script>
 
 <style scoped>
-.navbar .navbar-nav .nav-item a {
+/* .navbar .navbar-nav .nav-item a {
   font-size: 1rem;
   font-weight: 500;
 }
@@ -156,5 +193,5 @@ export default {
 
 .start-btn:hover {
   background-color: #2119ad;
-}
+} */
 </style>

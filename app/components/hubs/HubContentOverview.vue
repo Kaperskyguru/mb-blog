@@ -5,20 +5,16 @@
     <HubBanner :chapter="chapter" :color="color" />
 
     <!-- Main Section -->
-    <section class="main" style="background-color: #fff">
+    <section class="bg-white">
       <Breadcrumb :hub="hub" :color="color" :chapter="chapter" :post="post" />
 
-      <div class="container">
-        <div class="row Resources pt-4 p-0 m-0">
-          <div class="py-4 col-md-3 w100">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-wrap Resources pt-4 p-0 m-0">
+          <div class="py-4 w-full md:w-1/4">
             <Outline :color="color" :outlines="outlines" />
           </div>
 
-          <HubContent
-            :color="color"
-            style="background-color: white"
-            :post="post"
-          />
+          <HubContent :color="color" class="bg-white flex-1" :post="post" />
         </div>
       </div>
     </section>
@@ -26,7 +22,7 @@
     <!-- Pagination Section -->
     <section v-if="postSize">
       <div class="slides" :style="{ background: color }">
-        <div class="container">
+        <div class="max-w-7xl mx-auto">
           <HubPagination :chapter="chapter" :outlines="outlines" />
         </div>
       </div>

@@ -1,28 +1,31 @@
 <template>
   <main>
     <div class="notif">
-      <h2
-        class="d-flex justify-center gap-1.5 text-xs font-medium text-black text-base"
-        style="font-size: 1rem; font-weight: bold"
-      >
-        Unlock Your Python Backend Career: Build 30 Projects in 30 Days.
+      <h2 class="flex justify-center items-center gap-1.5 text-base font-bold">
+        <span class="text-black">
+          Unlock Your Python Backend Career: Build 30 Projects in 30 Days.</span
+        >
 
         <a
-          class="justify-center gap-1.5 rounded bg-black px-2 py-0.5 text-sm text-xs font-medium uppercase tracking-wide text-white hover:bg-zinc-800 px-sm-3 py-sm-1"
+          class="ml-2 flex justify-center items-center gap-1.5 rounded bg-black px-3 py-2 text-xs font-medium uppercase tracking-wide !text-white hover:bg-zinc-800"
           target="_blank"
           href="https://python30.masteringbackend.com?ref=masteringbackend"
-          >Join now for just $54</a
         >
+          Join now for just $54
+        </a>
       </h2>
     </div>
+
     <header>
       <Nav />
     </header>
+
     <slot class="mb-5" />
 
     <Footer />
   </main>
 </template>
+
 
 <script>
 // import '~/assets/css/hub/style.css'
@@ -60,7 +63,6 @@ export default {
 
 body {
   background: #f1f1f1;
-  color: #000;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif !important;
   overflow-x: hidden;

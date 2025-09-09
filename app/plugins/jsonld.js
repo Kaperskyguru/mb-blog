@@ -1,4 +1,5 @@
-import Vue from 'vue'
 import NuxtJsonld from 'nuxt-jsonld'
 
-Vue.use(NuxtJsonld)
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(NuxtJsonld)
+})

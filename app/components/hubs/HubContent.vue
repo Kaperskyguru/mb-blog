@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div class="col-md-8">
+  <div class="md:col-span-">
     <!-- Title -->
-    <span v-if="isChapter" class="fw-light">
+    <span v-if="isChapter" class="font-light">
       <p :style="{ color }" class="pb-1">{{ title }}</p>
     </span>
 
-    <h1 v-else class="fw-light fs-3 fw-bold pb-4">
+    <h1 v-else class="font-bold text-4xl font-black pb-4">
       {{ title }}
     </h1>
 
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Chapter Outline -->
-    <div v-if="isChapter" class="w-100 pt-5">
+    <div v-if="isChapter" class="w-full pt-5">
       <ChapterOutline
         v-for="(chapterPost, i) in post?.posts"
         :key="i"
@@ -40,6 +40,7 @@
     <PlatformAd />
   </div>
 </template>
+
 
 <script setup>
 import { computed } from 'vue'
@@ -129,7 +130,7 @@ article > * {
 
 article p {
   font-size: 1.125rem;
-  margin-bottom: 1.3rem;
+  /* margin-bottom: 1.3rem; */
   font-weight: 400;
   line-height: 1.8;
 }

@@ -1,15 +1,18 @@
 <template>
-  <main class="main">
+  <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="row d-flex align-items-center">
-          <div class="col-md-6 hero__title">
-            <h1 class="title__text">{{ title }}</h1>
-            <p class="title__subtext fs-6">{{ desc }}</p>
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <!-- Left -->
+          <div class="flex-1">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+              {{ title }}
+            </h1>
+            <p class="mt-4 text-base text-gray-600">{{ desc }}</p>
 
-            <div class="mt-5">
-              <div class="mb-1" style="color: #0a083b">
+            <div class="mt-8">
+              <div class="mb-2 text-[#0a083b]">
                 Be notified when we publish new {{ route.name }}.
               </div>
               <iframe
@@ -17,30 +20,32 @@
                 height="52"
                 frameborder="0"
                 scrolling="no"
-                style="
-                  margin: 0;
-                  border-radius: 0;
-                  background: transparent;
-                  width: 100%;
-                "
+                class="w-full bg-transparent rounded-none border-0"
               />
             </div>
           </div>
-          <div class="col-md-6 hero__image">
-            <img class="img-fluid" :src="image" :alt="title" />
+
+          <!-- Right -->
+          <div class="flex-1">
+            <img class="w-full h-auto" :src="image" :alt="title" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- Featured Courses -->
-    <section class="container" v-if="route.path.includes('/courses')">
-      <h2 class="text-center py-5">Featured Single Courses</h2>
-      <div class="row gap-3 p-2">
+    <section
+      v-if="route.path.includes('/courses')"
+      class="max-w-7xl mx-auto px-4"
+    >
+      <h2 class="text-center text-2xl md:text-3xl font-semibold py-10">
+        Featured Single Courses
+      </h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <Course v-for="(course, i) in cFeatured" :key="i" :course="course" />
       </div>
 
-      <div class="d-flex justify-content-center py-5">
+      <div class="flex justify-center py-10">
         <Button type="link" appearance="primary" link="/courses/single">
           View All Courses
         </Button>
@@ -48,150 +53,177 @@
     </section>
 
     <!-- Content Section -->
-    <section class="Content">
-      <h2 class="text-center py-5" v-if="route.path.includes('/courses')">
+    <section>
+      <h2
+        v-if="route.path.includes('/courses')"
+        class="text-center text-2xl md:text-3xl font-semibold py-10"
+      >
         Roadmap Courses
       </h2>
-      <div class="container">
-        <div v-for="(hub, i) in hubs" :key="i" class="row mt-5 bg-white">
-          <div
-            class="col-xl-3 lh-lg col-lg-12 text-center text-white"
-            :style="{ backgroundColor: color(hub) }"
-          >
-            <h3 class="py-5 font-weight-normal fs-4">
-              {{ hub.title }} {{ isPDF(hub) ? 'Resources' : '' }}
-            </h3>
-            <img
-              loading="lazy"
-              class="img-fluid hub mt-3"
-              :src="getDesign(hub)"
-              :alt="hub.title"
-            />
-          </div>
 
-          <div class="col-xl-9 col-lg-12">
-            <div class="row justify-content-between py-5 px-4">
-              <!-- Left column -->
-              <div class="col-lg-6">
-                <h5 class="pb-4" :style="{ color: color(hub) }">
-                  What you will learn
-                </h5>
-                <p class="lh-lg">{{ hub.description }}</p>
+      <div class="max-w-7xl mx-auto p-4">
+        <div
+          v-for="(hub, i) in hubs"
+          :key="i"
+          class="mt-8 bg-white shadow rounded-lg overflow-hidden"
+        >
+          <div class="flex flex-col xl:flex-row">
+            <!-- Left -->
+            <div
+              class="xl:w-1/4 w-full leading-loose text-center text-white flex flex-col items-center justify-center"
+              :style="{ backgroundColor: color(hub) }"
+            >
+              <div class="px-4">
+                <h3 class="-6 text-2xl font-semibold">
+                  {{ hub.title }} {{ isPDF(hub) ? 'Resources' : '' }}
+                </h3>
               </div>
+              <img
+                loading="lazy"
+                class="w-full max-w-xs mx-auto mt-4"
+                :src="getDesign(hub)"
+                :alt="hub.title"
+              />
+            </div>
 
-              <!-- Right column -->
-              <div class="col-lg-6">
-                <h5
-                  class="pb-4"
-                  :style="{ color: color(hub) }"
-                  v-if="getChapterCount(hub)"
-                >
-                  <span v-if="isPDF(hub)">
-                    {{ getChapterCount(hub) }} Resource{{
-                      getChapterCount(hub) > 1 ? 's' : ''
-                    }}
-                  </span>
-                  <span v-else-if="isBook(hub)">
-                    {{ getPostCount(hub) }} Chapter{{
-                      getPostCount(hub) > 1 ? 's' : ''
-                    }}
-                  </span>
-                  <span v-else-if="isCourse(hub)">
-                    {{ getChapterCount(hub) }} Module{{
-                      getChapterCount(hub) > 1 ? 's' : ''
-                    }}
-                  </span>
-                  <span v-else>
-                    {{ getChapterCount(hub) }} Chapter{{
-                      getChapterCount(hub) > 1 ? 's' : ''
-                    }}
-                  </span>
-                </h5>
+            <!-- Right -->
+            <div class="xl:w-3/4 w-full">
+              <div
+                class="flex flex-col lg:flex-row justify-between gap-8 py-8 px-6"
+              >
+                <!-- Left column -->
+                <div class="lg:w-1/2">
+                  <h5 class="pb-4 font-medium" :style="{ color: color(hub) }">
+                    What you will learn
+                  </h5>
+                  <p class="leading-loose text-gray-800">
+                    {{ hub.description }}
+                  </p>
+                </div>
 
-                <div
-                  class="d-flex flex-column overflow-auto"
-                  style="height: 300px"
-                >
-                  <div v-if="isBook(hub)">
-                    <p
-                      v-for="(chapter, idx) in getBookPostsFromHubChapter(hub)"
-                      :key="idx"
-                      class="pe-2 font-weight-light d-flex flex-row fs-5"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        :fill="color(hub)"
-                        width="24"
-                        height="24"
-                      >
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M16 12l-6 6V6z" />
-                      </svg>
-                      <span class="flex-fill">{{ chapter.title }}</span>
-                    </p>
-                  </div>
+                <!-- Right column -->
+                <div class="lg:w-1/2">
+                  <h5
+                    v-if="getChapterCount(hub)"
+                    class="pb-4 font-medium"
+                    :style="{ color: color(hub) }"
+                  >
+                    <span v-if="isPDF(hub)">
+                      {{ getChapterCount(hub) }} Resource{{
+                        getChapterCount(hub) > 1 ? 's' : ''
+                      }}
+                    </span>
+                    <span v-else-if="isBook(hub)">
+                      {{ getPostCount(hub) }} Chapter{{
+                        getPostCount(hub) > 1 ? 's' : ''
+                      }}
+                    </span>
+                    <span v-else-if="isCourse(hub)">
+                      {{ getChapterCount(hub) }} Module{{
+                        getChapterCount(hub) > 1 ? 's' : ''
+                      }}
+                    </span>
+                    <span v-else>
+                      {{ getChapterCount(hub) }} Chapter{{
+                        getChapterCount(hub) > 1 ? 's' : ''
+                      }}
+                    </span>
+                  </h5>
 
                   <div
-                    v-for="(chapter, idx) in (!isBook(hub) && hub.chapters) ||
-                    []"
-                    :key="idx"
+                    class="flex flex-col overflow-y-auto h-96 pr-2 space-y-3"
                   >
-                    <a
-                      v-if="isPDF(hub)"
-                      :href="`${getURL(hub)}/${getLink(chapter)}`"
-                    >
-                      <p class="pe-2 font-weight-light d-flex flex-row fs-5">
+                    <!-- For Books -->
+                    <div v-if="isBook(hub)">
+                      <p
+                        v-for="(chapter, idx) in getBookPostsFromHubChapter(
+                          hub
+                        )"
+                        :key="idx"
+                        class="flex items-center text-gray-800 text-lg font-light gap-2"
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           :fill="color(hub)"
-                          width="24"
-                          height="24"
+                          class="w-6 h-6 shrink-0"
                         >
                           <path fill="none" d="M0 0h24v24H0z" />
                           <path d="M16 12l-6 6V6z" />
                         </svg>
-                        <span class="flex-fill">{{ chapter.title }}</span>
+                        <span class="flex-1">{{ chapter.title }}</span>
                       </p>
-                    </a>
+                    </div>
 
-                    <p
-                      v-else
-                      class="pe-2 font-weight-light d-flex flex-row fs-5"
+                    <!-- For Other Types -->
+                    <div
+                      v-for="(chapter, idx) in (!isBook(hub) && hub.chapters) ||
+                      []"
+                      :key="idx"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        :fill="color(hub)"
-                        width="24"
-                        height="24"
+                      <a
+                        v-if="isPDF(hub)"
+                        :href="`${getURL(hub)}/${getLink(chapter)}`"
+                        class="block"
                       >
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M16 12l-6 6V6z" />
-                      </svg>
-                      <span class="flex-fill">{{ chapter.title }}</span>
-                    </p>
+                        <p
+                          class="flex items-center text-gray-800 text-lg font-light gap-2"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            :fill="color(hub)"
+                            class="w-6 h-6 shrink-0"
+                          >
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M16 12l-6 6V6z" />
+                          </svg>
+                          <span class="flex-1">{{ chapter.title }}</span>
+                        </p>
+                      </a>
+
+                      <p
+                        v-else
+                        class="flex items-center text-gray-800 text-lg font-light gap-2 m-0"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          :fill="color(hub)"
+                          class="w-6 h-6 shrink-0"
+                        >
+                          <path fill="none" d="M0 0h24v24H0z" />
+                          <path d="M16 12l-6 6V6z" />
+                        </svg>
+                        <span class="flex-1">{{ chapter.title }}</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Footer -->
-            <div class="col-12 d-flex gap-2 align-self-end">
-              <Button
-                class="btn-block"
-                size="large"
-                type="link"
-                :href="getURL(hub)"
-                :custom-style="{ backgroundColor: color(hub), color: '#fff' }"
-              >
-                Start Now
-              </Button>
-              <div v-if="isPremium(hub)">
-                <span class="badge text-light" style="background: #191489"
-                  >Premium</span
+              <!-- Footer -->
+              <div class="flex gap-3 items-start px-6 pb-6">
+                <Button
+                  class="w-full md:w-auto"
+                  size="large"
+                  type="link"
+                  :href="getURL(hub)"
+                  :custom-style="{
+                    backgroundColor: color(hub),
+                    color: '#fff !important',
+                  }"
                 >
+                  Start Now
+                </Button>
+                <div v-if="isPremium(hub)">
+                  <span
+                    class="inline-block px-3 py-1 text-white text-sm rounded"
+                    style="background: #191489"
+                  >
+                    Premium
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -200,6 +232,7 @@
     </section>
   </main>
 </template>
+
 
 <script setup>
 import { useRoute } from 'vue-router'

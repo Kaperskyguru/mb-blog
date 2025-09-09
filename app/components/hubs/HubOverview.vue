@@ -1,23 +1,24 @@
 <template>
-  <main class="main">
+  <main>
     <!-- Hero Section -->
-    <section class="py-5 my-5">
-      <div class="container">
-        <div class="row d-flex align-items-center">
-          <div class="col-md-6 hero__title">
-            <h1 class="title__text">
+    <section class="py-12 my-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <!-- Left -->
+          <div class="flex-1">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
               {{ title }} {{ isPDF ? 'Resources' : '' }}
             </h1>
-            <p class="title__subtext fs-6">
+            <p class="mt-4 text-base text-gray-800 font-normal leading-relaxed">
               {{ description }}
             </p>
 
-            <div class="input-group py-3">
+            <div class="py-4">
               <Button
                 v-if="!isPDF"
                 :custom-style="{
                   backgroundColor: color,
-                  color: '#fff',
+                  color: '#fff !important',
                 }"
                 size="large"
                 type="link"
@@ -27,52 +28,56 @@
               </Button>
             </div>
           </div>
-          <div class="col-md-6 hero__image">
+
+          <!-- Right -->
+          <div class="flex-1">
             <!-- Waiting List Form -->
             <div
               v-if="shouldActivateWaitingList"
-              class="shadow border p-4 my-4"
-              style="background-color: white"
+              class="shadow border p-6 my-6 bg-white rounded-lg"
             >
               <form
                 id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
                 action="https://api.encharge.io/v1/forms/bacf371b-b382-4024-9adb-99ea3c829eae/submission/plain"
                 method="POST"
               >
-                <div class="form-group py-3">
+                <!-- Full Name -->
+                <div class="py-3">
                   <label
-                    class="text-dark"
+                    class="text-gray-800 block mb-2 font-medium"
                     for="1bf52140-11b8-46e9-8115-8fa21b589cfb"
                   >
-                    <b>Full Name</b>
+                    Full Name
                   </label>
                   <input
                     id="1bf52140-11b8-46e9-8115-8fa21b589cfb"
                     name="name"
-                    class="form-control shadow-none fs-5"
+                    class="w-full border rounded px-4 py-2 text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     type="text"
                     placeholder="Enter your full name"
                     required
                   />
                 </div>
 
-                <div class="form-group py-3">
+                <!-- Email -->
+                <div class="py-3">
                   <label
-                    class="text-dark"
+                    class="text-gray-800 block mb-2 font-medium"
                     for="7dbc4ccf-238b-4128-9250-634cccb01176"
                   >
-                    <b>E-mail</b>
+                    E-mail
                   </label>
                   <input
                     id="7dbc4ccf-238b-4128-9250-634cccb01176"
                     name="email"
-                    class="form-control shadow-none fs-5"
+                    class="w-full border rounded px-4 py-2 text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     type="email"
                     required
                     placeholder="Enter your email address"
                   />
                 </div>
 
+                <!-- Hidden Tag -->
                 <input
                   type="hidden"
                   id="31b47661-eae6-42bd-bc02-df3c004a01f9"
@@ -80,9 +85,10 @@
                   :value="enchargeTag"
                 />
 
-                <div class="text-center mt-4">
+                <!-- Submit -->
+                <div class="text-center mt-6">
                   <button
-                    class="col-12 start-btn py-2 my-2 fs-4 fw-bold"
+                    class="w-full py-3 text-lg font-bold rounded"
                     type="submit"
                     :style="{ backgroundColor: color, color: '#fff' }"
                   >
@@ -92,31 +98,32 @@
               </form>
             </div>
 
-            <img v-else class="img-fluid" :src="image" :alt="title" />
+            <!-- Fallback Image -->
+            <img v-else class="w-full h-auto" :src="image" :alt="title" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- Backend Section -->
-    <section class="m-5" v-if="isBackend">
-      <div class="container w-50 d-flex flex-1">
-        <div class="d-flex justify-content-center text-center flex-column">
-          <h2 class="hero__title title__text">Backend as a Journey (BaaJ)</h2>
-          <p>
-            Backend engineering is a Journey of no return. If you're ready to
-            jump on this rewarding journey. Start below:
-          </p>
-        </div>
+    <section v-if="isBackend" class="m-12">
+      <div class="max-w-2xl mx-auto flex flex-col items-center text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold">
+          Backend as a Journey (BaaJ)
+        </h2>
+        <p class="mt-4 text-gray-600">
+          Backend engineering is a Journey of no return. If you're ready to jump
+          on this rewarding journey. Start below:
+        </p>
       </div>
     </section>
 
     <!-- Chapters Section -->
     <section
-      :class="{ 'py-5 my-5': shouldActivateWaitingList || isPremium }"
-      class="Conent"
+      :class="{ 'py-12 my-12': shouldActivateWaitingList || isPremium }"
+      class="Content"
     >
-      <div class="container">
+      <div class="max-w-7xl mx-auto px-4">
         <Chapter
           v-for="(chapter, i) in chapters"
           :key="i"
@@ -126,6 +133,7 @@
     </section>
   </main>
 </template>
+
 
 <script setup>
 import { computed } from 'vue'

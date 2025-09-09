@@ -1,30 +1,36 @@
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <main>
-    <!-- ---------------------------------------Header Section------------------------------------------------ -->
+    <!-- --------------------------------------- Header Section ------------------------------------------------ -->
     <HubBanner :chapter="chapter" :color="color" :is-chapter="true" />
-    <!-- ---------------------------------------End Header Section------------------------------------------------ -->
+    <!-- --------------------------------------- End Header Section --------------------------------------------- -->
 
-    <!-- -------------------------------------------- Start Main Section----------------------------------------------- -->
-    <section class="main">
+    <!-- -------------------------------------------- Start Main Section ---------------------------------------- -->
+    <section class="py-6">
       <Breadcrumb :hub="hub" :color="color" :chapter="chapter" :post="post" />
-      <div class="container">
-        <div class="row Resources mt-4">
-          <div class="py-4 col-md-3 w100">
+
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-6 mt-6">
+          <!-- Sidebar Outline -->
+          <div class="md:w-1/4 w-full py-4">
             <Outline :color="color" :outlines="outlines" />
           </div>
-          <HubContent :post="chapter" is-chapter :color="color" />
+
+          <!-- Main Hub Content -->
+          <div class="flex-1">
+            <HubContent :post="chapter" is-chapter :color="color" />
+          </div>
         </div>
       </div>
     </section>
-    <!-- -------------------------------------------- End Main Section----------------------------------------------- -->
+    <!-- -------------------------------------------- End Main Section ------------------------------------------ -->
 
     <section>
       <!-- <RelatedHubs :color="color" /> -->
     </section>
-    <!-- ----------------------------------End Slides------------------------------------- -->
+    <!-- ---------------------------------- End Slides ------------------------------------- -->
   </main>
 </template>
+
 
 <script setup>
 import { computed } from 'vue'

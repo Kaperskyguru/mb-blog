@@ -1,4 +1,5 @@
 <template>
+  <!-- Beehiiv Embed -->
   <iframe
     v-if="slug.includes('design-patterns')"
     src="https://embeds.beehiiv.com/638ed077-b961-4a71-80a7-cefc821c28d4"
@@ -7,14 +8,10 @@
     height="320"
     frameborder="0"
     scrolling="no"
-    style="
-      border-radius: 4px;
-      border: 2px solid #e5e7eb;
-      margin: 0;
-      background-color: transparent;
-    "
+    class="rounded border-2 border-gray-200 bg-transparent"
   ></iframe>
 
+  <!-- Encharge Form -->
   <form
     v-else
     @submit.prevent="onSubmit"
@@ -22,86 +19,87 @@
     id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
     action="https://api.encharge.io/v1/forms/bacf371b-b382-4024-9adb-99ea3c829eae/submission/plain"
     method="POST"
+    class="space-y-6"
   >
-    <div class="form-group py-3">
-      <label class="text-dark" for="1bf52140-11b8-46e9-8115-8fa21b589cfb">
-        <b>Full Name</b>
+    <!-- Full Name -->
+    <div class="flex flex-col space-y-2">
+      <label
+        for="1bf52140-11b8-46e9-8115-8fa21b589cfb"
+        class="text-gray-900 font-semibold"
+      >
+        Full Name
       </label>
       <input
         id="1bf52140-11b8-46e9-8115-8fa21b589cfb"
         name="name"
-        class="encharge-form-input sc-gqjmRU liSvtx col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
         type="text"
         placeholder="Enter your full name"
         required
+        class="w-full max-w-lg rounded-md border border-gray-300 px-4 py-2 text-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
       />
     </div>
 
-    <div class="form-group py-3">
-      <label class="text-dark" for="7dbc4ccf-238b-4128-9250-634cccb01176">
-        <b>E-mail</b>
+    <!-- Email -->
+    <div class="flex flex-col space-y-2">
+      <label
+        for="7dbc4ccf-238b-4128-9250-634cccb01176"
+        class="text-gray-900 font-semibold"
+      >
+        E-mail
       </label>
       <input
         id="7dbc4ccf-238b-4128-9250-634cccb01176"
         name="email"
-        class="encharge-form-input sc-gqjmRU liSvtx col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
         type="email"
         required
         placeholder="Enter your email address"
+        class="w-full max-w-lg rounded-md border border-gray-300 px-4 py-2 text-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
       />
     </div>
 
+    <!-- Hidden Field -->
     <input
       type="hidden"
       id="31b47661-eae6-42bd-bc02-df3c004a01f9"
       name="HiddenTag"
       :value="tag"
-      class="encharge-form-input sc-htoDjs jmyTNa form-control"
     />
 
-    <div class="field mt-4">
-      <small class="text-center fst-italic fw-bold"
+    <!-- Submit Section -->
+    <div class="mt-4 text-center">
+      <small class="italic font-bold block mb-2"
         >If you only want the resource, please peacefully unsubscribe when you
-        recieve it</small
+        receive it</small
       >
-      <div class="control text-center">
-        <button
-          class="col-12 start-btn py-2 my-2 fs-4 fw-bold"
-          type="submit"
-          :style="{
-            backgroundColor: `${color}`,
-            color: '#fff',
-          }"
-        >
-          {{ isWaiting ? 'Get Notified' : 'Get The Book' }}
-        </button>
-      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-md px-6 py-3 text-xl font-bold transition duration-200"
+        :style="{ backgroundColor: color, color: '#fff' }"
+      >
+        {{ isWaiting ? 'Get Notified' : 'Get The Book' }}
+      </button>
     </div>
 
-    <div class="sc-jzJRlG hjFAqE">
-      <div
+    <!-- Consent Checkbox -->
+    <div class="flex items-start space-x-2 mt-4">
+      <input
+        type="checkbox"
+        id="193ff0f2-d701-4df3-a0bf-e9d1e1f30aa4"
         name="nativeFormMarketingConsent"
-        class="encharge-form-group sc-jTzLTM bPowmp form-group"
+        required
+        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+      />
+      <label
+        for="193ff0f2-d701-4df3-a0bf-e9d1e1f30aa4"
+        class="text-sm text-gray-700"
       >
-        <input
-          type="checkbox"
-          id="193ff0f2-d701-4df3-a0bf-e9d1e1f30aa4"
-          name="nativeFormMarketingConsent"
-          required
-          class="encharge-form-checkbox sc-gqjmRU gCOwty form-check-input"
-        />
-        <label
-          for="193ff0f2-d701-4df3-a0bf-e9d1e1f30aa4"
-          class="encharge-form-label sc-VigVT bSCkYy"
-        >
-          <small
-            >I agree to receive emails from you (unsubscribe anytime).</small
-          >
-        </label>
-      </div>
+        I agree to receive emails from you (unsubscribe anytime).
+      </label>
     </div>
   </form>
 </template>
+
 
 <script>
 export default {

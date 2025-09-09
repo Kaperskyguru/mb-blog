@@ -1,23 +1,21 @@
 <template>
   <nuxt-link to="/">
     <img
-      data-not-lazy
       v-if="isWhite"
-      src="~/assets/img/logo-white.png"
+      src="~/assets/White.png"
       alt="logo"
       width="200"
       height="auto"
-      class="d-inline-block align-text-top"
+      class="inline-block align-text-top w-1/2"
     />
 
     <img
-      data-not-lazy
       v-else
-      src="~/assets/img/logo.png"
+      src="~/assets/logo.png"
       alt="logo"
       width="200"
       height="auto"
-      class="d-inline-block align-text-top"
+      class="inline-block align-text-top w-1/2"
     />
   </nuxt-link>
 </template>

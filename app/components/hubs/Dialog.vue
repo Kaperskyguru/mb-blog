@@ -1,43 +1,46 @@
 <template>
-  <section v-if="visible" class="modal-container modal">
+  <section
+    v-if="visible"
+    class="fixed inset-0 z-[1000] flex bg-[#05041b]/60 backdrop-blur-md"
+  >
     <div
-      class="d-flex mw-100 w-100 justify-items-center justify-content-center"
+      class="flex w-full max-w-full justify-center items-center"
       tabindex="-1"
       role="dialog"
       ref="dialog"
     >
-      <div
-        class="position-relative w-100"
-        style="max-width: 1000px; margin: 29px 10px"
-        role="document"
-      >
-        <div class="modal-content">
+      <div class="relative w-full max-w-[1000px] mx-2 my-7" role="document">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <!-- Header -->
           <div
-            class="d-flex justify-content-between pb-2 border-b rounded-top"
+            class="flex justify-between rounded-t p-4 border-b"
             :style="{ backgroundColor: color }"
-            style="padding: 1rem"
           >
-            <div v-if="title" class="text-white p-8">
+            <div v-if="title" class="text-white">
               <h2 class="mb-1 font-bold">{{ title }}</h2>
               <p v-if="description" class="text-gray-100">
                 {{ description }}
               </p>
             </div>
-            <div class="close p-3 text-white" @click.prevent="close">
-              <CloseIcon style="width: 20px; height: 20px; color: #fff" />
+            <div
+              class="absolute top-0 right-0 p-3 cursor-pointer text-white"
+              @click.prevent="close"
+            >
+              <CloseIcon class="w-5 h-5 text-white" />
             </div>
           </div>
 
           <!-- Content -->
-          <div class="col-12 w-100">
-            <div class="row" :class="contentClass">
-              <div class="col-lg-6 col-12" v-if="$slots.left">
+          <div class="w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2" :class="contentClass">
+              <!-- Left -->
+              <div v-if="$slots.left" class="p-4">
                 <slot name="left" />
               </div>
+              <!-- Right -->
               <div
-                class="col-lg-6 col-12 border-start ps-4 pe-4"
                 v-if="$slots.right"
+                class="border-l lg:border-l lg:border-gray-200 p-4"
               >
                 <slot name="right" />
               </div>
@@ -51,6 +54,7 @@
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ref, watch, onBeforeUnmount, nextTick } from 'vue'
@@ -124,7 +128,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   #border {
     border-bottom: 1px solid #dee2e6 !important;
     border-right: 0px solid #dee2e6 !important;
@@ -149,5 +153,5 @@ onBeforeUnmount(() => {
   background-color: rgb(5 4 27/0.6);
   backdrop-filter: blur(8px);
   display: flex;
-}
+} */
 </style>

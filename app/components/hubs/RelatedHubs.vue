@@ -1,47 +1,43 @@
 <template>
-  <div class="container">
-    <div class="my-5">
-      <h5 class="topic__title--text text-center" :style="{ color: `${color}` }">
-        More Topics
-      </h5>
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Section Title -->
+    <div class="my-12 text-center">
+      <h5 class="text-lg font-semibold" :style="{ color }">More Topics</h5>
     </div>
-    <div class="row g-4">
+
+    <!-- Topics Grid -->
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <NuxtLink
-        :to="`/${hub.slug}`"
-        class="col-lg-4"
         v-for="hub in hubs"
         :key="hub.id"
+        :to="`/${hub.slug}`"
+        class="no-underline"
       >
         <div
-          class="card bg-pink pt-4"
+          class="h-full rounded-2xl shadow-md pt-6 transition hover:shadow-lg"
           :style="{ backgroundColor: getColor(hub.color) }"
         >
-          <div class="row">
-            <div class="col-md-10 pt-2 ps-5">
-              <h6
-                class="text-white fw-bold"
-                style="font-size: 0.84rem; font-weight: 700"
-              >
-                {{ getChapterCount(hub) }} Resource{{
-                  getChapterCount(hub) > 1 ? 's' : ''
-                }}
-              </h6>
-              <h2
-                class="pt-4 text-white"
-                style="
-                  font-size: 1.68rem;
-                  font-weight: 300;
-                  line-height: 1.2;
-                  display: block;
-                "
-              >
-                {{ hub.title }}
-              </h2>
-            </div>
-            <div class="col-lg-12 mb-3 p-5 d-flex justify-content-center">
-              <div class="w-75">
-                <img class="img-fluid" :src="getDesign(hub)" alt="" srcset="" />
-              </div>
+          <!-- Text Content -->
+          <div class="px-6">
+            <h6 class="text-white font-bold text-[0.84rem]">
+              {{ getChapterCount(hub) }} Resource
+              <span v-if="getChapterCount(hub) > 1">s</span>
+            </h6>
+
+            <h2 class="pt-4 text-white font-light text-[1.68rem] leading-snug">
+              {{ hub.title }}
+            </h2>
+          </div>
+
+          <!-- Image -->
+          <div class="flex justify-center py-8">
+            <div class="w-3/4">
+              <img
+                class="w-full h-auto"
+                :src="getDesign(hub)"
+                :alt="`${hub.title} illustration`"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -49,6 +45,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {

@@ -1,144 +1,64 @@
 <template>
-  <section>
-    <!-- Hero Section -->
-    <section style="background-color: #f7f5fa">
-      <div class="container mx-auto">
-        <div class="row d-flex">
-          <!-- Left Text -->
-          <div id="chapter" class="col-md-7 position-relative">
-            <h1
-              class="title__text py-4"
-              style="font-size: 52px; font-weight: 800; line-height: 62px"
+  <section class="bg-[#f7f5fa]">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap">
+        <!-- Left Text -->
+        <div id="chapter" class="w-full md:w-7/12 relative">
+          <h1 class="text-[52px] font-extrabold leading-[62px] py-4">
+            {{ title }} for Backend Engineers
+          </h1>
+
+          <p class="text-xl">{{ description }}</p>
+          <div class="gradient"></div>
+
+          <div class="py-3" v-if="!slug.includes('design-patterns')">
+            <Button
+              v-if="!activateDownload"
+              :custom-style="{ backgroundColor: color, color: '#fff' }"
+              size="large"
+              class="py-2 my-2 text-xl font-bold"
+              type="link"
+              :link="link"
             >
-              {{ title }} for Backend Engineers
-            </h1>
+              {{ isPremium ? 'Grab Your Copy Now' : 'Read Online' }}
+            </Button>
 
-            <p class="title__subtext fs-4">{{ description }}</p>
-            <div class="gradient"></div>
-
-            <div
-              class="py-3 input-group"
-              v-if="!slug.includes('design-patterns')"
+            <Button
+              v-if="linkToPay && !isWaiting && !isPremium"
+              :custom-style="{
+                border: `1px solid ${color}`,
+                color: `${color} !important`,
+              }"
+              size="large"
+              type="link"
+              class="py-2 my-2 text-xl font-bold"
+              :link="linkToPay"
             >
-              <Button
-                v-if="!activateDownload"
-                :custom-style="{ backgroundColor: color, color: '#fff' }"
-                size="large"
-                class="py-2 my-2 fs-4 fw-bold"
-                type="link"
-                :link="link"
-              >
-                {{ isPremium ? 'Grab Your Copy Now' : 'Read Online' }}
-              </Button>
-
-              <Button
-                v-if="linkToPay && !isWaiting && !isPremium"
-                :custom-style="{
-                  border: `1px solid ${color}`,
-                  color: `${color} !important`,
-                }"
-                size="large"
-                type="link"
-                class="py-2 my-2 fs-4 fw-bold"
-                :link="linkToPay"
-              >
-                Download Now
-              </Button>
-            </div>
+              Download Now
+            </Button>
           </div>
+        </div>
 
-          <!-- Right Image / Form -->
-          <div class="col-md-5 hero__image">
-            <img
-              v-if="!isWaiting"
-              class="img-fluid"
-              :src="bookCover"
-              :alt="title"
+        <!-- Right Image / Form -->
+        <div class="w-full md:w-5/12 hero__image">
+          <img
+            v-if="!isWaiting"
+            class="w-full h-auto"
+            :src="bookCover"
+            :alt="title"
+          />
+
+          <div v-else class="shadow border p-4 my-4 bg-white">
+            <ResourceForm
+              :tag="enchargeTag"
+              :color="color"
+              :isWaiting="activateDownload"
+              :slug="slug"
             />
-
-            <div
-              v-else
-              class="shadow border p-4 my-4"
-              style="background-color: white"
-            >
-              <ResourceForm
-                :tag="enchargeTag"
-                :color="color"
-                :isWaiting="activateDownload"
-                :slug="slug"
-              />
-            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Peek Inside Section -->
-    <section class="w-100" style="background-color: rgb(243, 246, 250)">
-      <div class="py-5 container mx-auto">
-        <div class="my-5">
-          <h2
-            class="fw-bolder"
-            style="font-size: 50px; font-weight: 800; line-height: 65px"
-          >
-            Take a peek inside
-          </h2>
-        </div>
-
-        <div class="row py-1">
-          <!-- Left: Animated Book Cover -->
-          <div class="col-lg-6">
-            <div class="shadow p-4 border my-4" style="max-width: 500px">
-              <img
-                class="img-fluid cover"
-                :src="animatedBookCover"
-                :alt="title"
-              />
-            </div>
-          </div>
-
-          <!-- Right: Content -->
-          <div class="col-lg-6">
-            <h3
-              class="py-4 fs-2 fw-bold"
-              style="color: #121127; font-size: 40px; line-height: 58.5px"
-            >
-              {{ title }}
-            </h3>
-
-            <p style="color: #121127">{{ content }}</p>
-            <hr class="my-4" />
-
-            <h3 v-if="chapters?.length" class="my-3">What to expect?</h3>
-
-            <ul class="list-unstyled">
-              <li
-                v-for="(outline, i) in chapters"
-                :key="i"
-                class="lh-lg fw-normal"
-                style="font-size: 20px; line-height: 28px; color: #121127"
-              >
-                <span
-                  class="d-flex flex-row justify-content-start align-items-center title__text"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    :fill="color"
-                    width="24"
-                    height="24"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M16 12l-6 6V6z" />
-                  </svg>
-                  <span>{{ outline.title }}</span>
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </section>
 </template>
 

@@ -1,51 +1,44 @@
 <template>
   <div
-    class="col-md-2 col-12 p-0 border rounded bg-white"
-    style="min-width: 300px; max-width: 388px; overflow: hidden"
+    class="col-span-12 md:col-span-2 p-0 border rounded bg-white min-w-[300px] max-w-[388px] overflow-hidden"
   >
     <!-- Banner Image -->
-    <div
-      class="position-relative d-flex w-full align-items-center justify-content-center"
-    >
-      <div class="w-100 h-100">
-        <img class="img-fluid w-100" :src="banner" :alt="title" />
+    <div class="relative flex w-full items-center justify-center">
+      <div class="w-full h-full">
+        <img class="w-full h-auto" :src="banner" :alt="title" />
       </div>
     </div>
 
     <!-- Course Info -->
-    <div class="p-3" style="min-height: 148px; margin-top: 0.5rem">
-      <div class="d-flex justify-content-between align-items-center mb-2">
+    <div class="p-3 min-h-[148px] mt-2">
+      <div class="flex justify-between items-center mb-2">
         <h3
-          class="text-uppercase bg-success rounded py-1 px-2 text-white"
-          style="font-size: 1rem"
+          class="uppercase bg-green-600 rounded py-1 px-2 text-white text-[1rem]"
         >
           {{ type }}
         </h3>
-        <span class="border-primary border rounded px-2 text-primary">
+        <span class="border border-primary rounded px-2 text-primary text-sm">
           {{ isPremium ? `$${amount}` : 'Free' }}
         </span>
       </div>
 
       <div class="course-content">
-        <h2
-          class="font-weight-bold"
-          style="font-size: 1.5rem; line-height: 2.5rem"
-        >
+        <h2 class="font-bold text-[1.5rem] leading-[2.5rem]">
           {{ title }}
         </h2>
-        <p v-html="summarySnippet" class="text-muted"></p>
+        <p v-html="summarySnippet" class="text-gray-500"></p>
       </div>
     </div>
 
     <!-- Footer: Content Count + Button -->
-    <div class="d-flex justify-content-between align-items-center px-3 pb-4">
-      <div class="d-flex align-items-center gap-2">
+    <div class="flex justify-between items-center px-3 pb-4">
+      <div class="flex items-center gap-2">
         <img
-          class="star-img"
+          class="w-4 h-4"
           src="~/assets/icons/openbook-icon.png"
           alt="Content"
         />
-        <span style="font-size: 0.875rem">{{ totalContent }}+ Contents</span>
+        <span class="text-sm">{{ totalContent }}+ Contents</span>
       </div>
       <Button
         type="link"
@@ -58,6 +51,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { computed } from 'vue'

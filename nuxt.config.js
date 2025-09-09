@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-import Utils from './helpers/utils'
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   app: {
@@ -52,10 +51,6 @@ export default defineNuxtConfig({
               },
             ],
           },
-        },
-
-        {
-          src: 'bootstrap/dist/js/bootstrap.bundle.min.js',
         },
         {
           src: 'https://cdn.paddle.com/paddle/paddle.js',
@@ -111,11 +106,7 @@ export default defineNuxtConfig({
             'backend,backend development,backend developer,backend web development, backend developers',
         },
         { hid: 'robots', name: 'robots', content: 'index, follow' },
-        // {
-        //   hid: 'http-equiv',
-        //   'http-equiv': 'Content-Type',
-        //   content: 'text/html; charset=utf-8',
-        // },
+
         { hid: 'language', name: 'language', content: 'English' },
         { hid: 'revisit-after', name: 'revisit-after', content: '7 days' },
         { hid: 'author', name: 'author', content: 'Solomon Eseme' },
@@ -186,26 +177,18 @@ export default defineNuxtConfig({
           sizes: '32x32',
           href: '/favicon/favicon-32x32.png',
         },
-        // {
-        //   rel: 'icon',
-        //   type: 'image/png',
-        //   sizes: '96x96',
-        //   href: '/favicon/favicon-96x96.png',
-        // },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'icon',
-          type: 'image/png',
-          sizes: '16x16',
-          href: '/favicon/favicon-16x16.png',
+          type: 'image/x-icon',
+          href: '/favicon.ico',
         },
         { rel: 'manifest', href: '/favicon/site.webmanifest' },
-        // {
-        //   rel: 'stylesheet',
-        //   // rel: 'preload',
-        //   href:
-        //     'https://fonts.googleapis.com/css2?family=Merriweather&display=swap',
-        // },
+        {
+          rel: 'stylesheet',
+          // rel: 'preload',
+          href: 'https://fonts.googleapis.com/css2?family=Merriweather&display=swap',
+        },
       ],
     },
   },
@@ -230,12 +213,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/hub/style.css', 'bootstrap/dist/css/bootstrap.min.css'],
 
   // Plugins to run before rendering page: https://go.nu xtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/infiniteloading', ssr: false, mode: 'client' },
-    '~/plugins/jsonld',
-    { src: '~/plugins/disqus', ssr: false },
-    '~/plugins/persistRefLinks.js',
-  ],
+  plugins: ['~/plugins/persistRefLinks.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
@@ -253,7 +231,7 @@ export default defineNuxtConfig({
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss'],
 
   // feed: [
   //   {

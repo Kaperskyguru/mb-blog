@@ -1,23 +1,23 @@
 <template>
   <div class="text-center text-white my-4">
     <div
-      class="position-relative pad"
-      :style="{ backgroundColor: bgColor, padding: '5rem' }"
+      class="relative p-20"
+      :style="{ backgroundColor: bgColor }"
       :id="showClip ? 'notify' : ''"
     >
       <!-- Title -->
-      <h3 class="fs-2 py-4">
+      <h3 class="text-2xl py-4">
         <slot name="title">{{ title }}</slot>
       </h3>
 
       <!-- Description -->
-      <p class="fs-5">
+      <p class="text-lg">
         <slot name="description">{{ description }}</slot>
       </p>
 
       <!-- Buttons -->
       <slot name="btn">
-        <div class="d-flex justify-content-center gap-4">
+        <div class="flex justify-center gap-4">
           <Button
             v-if="showRead"
             appearance="primary"

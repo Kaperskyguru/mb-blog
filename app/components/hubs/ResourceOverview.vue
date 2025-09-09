@@ -1,24 +1,22 @@
 <template>
   <section>
     <!-- ------------------------------------------Hero Section----------------------------------------------------------- -->
-    <section style="background-color: #f7f5fa">
+    <section class="bg-[#f7f5fa]">
       <div class="container mx-auto">
-        <div class="row d-flex align-items-center justify-content-between">
-          <div id="chapter" class="col-lg-6 position-relative w-50">
-            <h1
-              class="title__text py-4"
-              style="font-size: 52px; font-weight: 800; line-height: 62px"
-            >
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <!-- Left side -->
+          <div id="chapter" class="relative w-full lg:w-1/2">
+            <h1 class="py-4 text-[52px] font-extrabold leading-[62px]">
               {{ title }}
             </h1>
 
-            <p class="title__subtext fs-4">
+            <p class="text-xl">
               {{ description }}
             </p>
             <div class="gradient"></div>
 
             <!-- Laravel Breeze Button -->
-            <div class="input-group py-3" v-if="isLaravelBreeze">
+            <div class="py-3" v-if="isLaravelBreeze">
               <Button
                 v-if="!isPDF"
                 :custom-style="{ backgroundColor: color, color: '#fff' }"
@@ -31,7 +29,7 @@
             </div>
 
             <!-- Docker Button -->
-            <div class="input-group py-3" v-if="isDocker">
+            <div class="py-3" v-if="isDocker">
               <Button
                 v-if="!isPDF"
                 :custom-style="{ backgroundColor: color, color: '#fff' }"
@@ -45,12 +43,9 @@
           </div>
 
           <!-- Right side -->
-          <div class="col-lg-6 ml-auto p-2">
-            <div id="chapter" class="container mx-auto w-75">
-              <div
-                class="shadow border p-4 my-4"
-                style="background-color: white"
-              >
+          <div class="w-full lg:w-1/2 p-2">
+            <div id="chapter" class="container mx-auto w-3/4">
+              <div class="shadow border p-4 my-4 bg-white">
                 <ResourceForm
                   v-if="!isLaravelBreeze && !isDocker"
                   :tag="enchargeTag"
@@ -60,14 +55,14 @@
 
                 <img
                   v-else-if="isDocker"
-                  class="img-fluid"
+                  class="w-full h-auto"
                   src="https://public-files.gumroad.com/4b4q5j1x03zq6t19w7wnxizu5048"
                   alt="Docker PDF"
                 />
 
                 <img
                   v-else
-                  class="img-fluid"
+                  class="w-full h-auto"
                   src="https://strapi-images-aws-s3.s3.us-west-2.amazonaws.com/1694963417_e55e6533b9.png?updated_at=2023-09-17T16:31:10.286Z"
                   alt="Laravel breeze PDF"
                 />
@@ -79,67 +74,58 @@
     </section>
 
     <!-- ------------------------------------------About Section----------------------------------------------------------- -->
-    <section class="w-100" style="background-color: rgb(243, 246, 250)">
-      <div class="py-5 container mx-auto">
+    <section class="w-full bg-[#f3f6fa]">
+      <div class="container mx-auto py-5">
         <div id="hero_text" class="container mx-auto">
           <div class="my-5">
-            <h2
-              class="fw-bolder"
-              style="font-size: 50px; font-weight: 800; line-height: 65px"
-            >
+            <h2 class="text-[50px] font-extrabold leading-[65px]">
               What is the Ebook about?
             </h2>
           </div>
         </div>
 
         <div class="container mx-auto" id="hero_text">
-          <div class="row py-1">
+          <div class="flex flex-col lg:flex-row py-1 gap-6">
             <!-- Left image -->
-            <div class="col-lg-6">
-              <div class="shadow p-4 border my-4" style="max-width: 500px">
-                <img class="img-fluid cover" :src="image" :alt="title" />
+            <div class="w-full lg:w-1/2">
+              <div class="shadow p-4 border my-4 max-w-[500px]">
+                <img class="w-full h-auto cover" :src="image" :alt="title" />
               </div>
             </div>
 
             <!-- Right content -->
-            <div class="col-lg-6">
+            <div class="w-full lg:w-1/2">
               <div>
                 <h3
-                  class="py-4 fs-2 fw-bold"
-                  style="color: #121127; font-size: 40px; line-height: 58.5px"
+                  class="py-4 text-[40px] leading-[58.5px] font-bold text-[#121127]"
                 >
                   {{ title }}
                 </h3>
 
-                <p style="color: #121127">
+                <p class="text-[#121127]">
                   {{ description }}
                 </p>
                 <hr class="my-4" />
 
-                <h3 class="my-3">What to expect?</h3>
+                <h3 class="my-3 text-xl font-semibold">What to expect?</h3>
 
-                <ul class="list-unstyled">
+                <ul class="list-none space-y-3">
                   <li
                     v-for="(outline, i) in outlines"
                     :key="i"
-                    style="font-size: 20px; line-height: 28px; color: #121127"
-                    class="lh-lg fw-normal"
+                    class="text-[20px] leading-7 text-[#121127] font-normal flex items-center gap-2"
                   >
-                    <span
-                      class="d-flex flex-row justify-content-start align-items-center title__text"
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      :fill="color"
+                      width="24"
+                      height="24"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        :fill="color"
-                        width="24"
-                        height="24"
-                      >
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M16 12l-6 6V6z" />
-                      </svg>
-                      <span>{{ outline }}</span>
-                    </span>
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M16 12l-6 6V6z" />
+                    </svg>
+                    <span>{{ outline }}</span>
                   </li>
                 </ul>
               </div>

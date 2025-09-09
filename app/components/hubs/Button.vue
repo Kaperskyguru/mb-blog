@@ -147,7 +147,7 @@ const classNames = computed(() => {
 <style scoped>
 /* Keep your original button styles */
 .m-btn-primary {
-  background: #0a083b;
+  background: #0e1f33;
   color: #fff;
   border-radius: 5px;
   border: none;

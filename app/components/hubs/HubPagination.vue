@@ -1,20 +1,23 @@
 <template>
-  <div class="row p-4">
-    <div class="col-md-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 p-4">
+    <!-- Prev -->
+    <div>
       <NuxtLink v-if="prev" :to="linkTo(prev.slug)">
-        <p class="fw-normal" style="color: #f7f5fa">Prev</p>
+        <p class="font-normal text-[#f7f5fa]">Prev</p>
         <h4 class="text-white">{{ prev.title }}</h4>
       </NuxtLink>
     </div>
 
-    <div class="col-md-6 text-md-end">
+    <!-- Next -->
+    <div class="text-left md:text-right">
       <NuxtLink v-if="next" :to="linkTo(next.slug)">
-        <p class="fw-normal" style="color: #f7f5fa">Next</p>
+        <p class="font-normal text-[#f7f5fa]">Next</p>
         <h4 class="text-white">{{ next.title }}</h4>
       </NuxtLink>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'

@@ -1,15 +1,20 @@
 <template>
   <NuxtLink :to="`${getBaseURL}/${route.params.hub}/${post.slug}`">
-    <div class="col-lg-12 col-12 mt-4 rounded">
-      <div class="p-5 box bg-white">
-        <h3 class="fs-4 py-4">{{ post.title }}</h3>
-        <p class="fs-5" v-html="post.excerpt"></p>
+    <div class="w-full mt-4 rounded">
+      <div class="p-5 bg-white rounded shadow-sm">
+        <!-- Title -->
+        <h3 class="text-xl py-4">{{ post.title }}</h3>
 
-        <div class="d-flex justify-content-between pt-4" :style="{ color }">
-          <h5 class="fs-5">Explore this Resource</h5>
+        <!-- Excerpt -->
+        <p class="text-lg" v-html="post.excerpt"></p>
 
+        <!-- Footer -->
+        <div class="flex justify-between items-center pt-4" :style="{ color }">
+          <h5 class="text-lg">Explore this Resource</h5>
+
+          <!-- Arrow Icon -->
           <div
-            class="rounded-circle d-flex justify-content-center align-items-center"
+            class="flex justify-center items-center rounded-full"
             style="width: 40px; height: 40px"
             :style="{ backgroundColor: color, color: 'white' }"
           >

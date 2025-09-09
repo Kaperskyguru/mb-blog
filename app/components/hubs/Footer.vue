@@ -1,207 +1,185 @@
 <template>
   <div>
-    <footer class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="col mb-3">
-              <div>
-                <Logo is-white />
-                <p class="fs-6 mt-2 text-white">
-                  A great resource for backend engineers. Next-level Backend
-                  Engineering training and Exclusive resources.
-                </p>
-              </div>
+    <footer class="bg-[#0E1F33] text-white/70 text-[0.6rem] font-normal py-5">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+          <!-- Logo + Intro -->
+          <div class="w-full md:w-1/3 mb-6 md:mb-0">
+            <div class="mb-3">
+              <Logo is-white />
+              <p class="text-white mt-2 text-[1.1rem] font-light">
+                A great resource for backend engineers. Next-level Backend
+                Engineering training and Exclusive resources.
+              </p>
             </div>
           </div>
-          <div class="col">
-            <div class="row justify-between">
-              <div class="col-md-3 text-col">
+
+          <!-- Navigation Columns -->
+          <div class="flex-1">
+            <div class="flex flex-wrap justify-between">
+              <!-- Learn -->
+              <div class="w-1/2 md:w-1/4 text-white">
                 <p class="mb-4">Learn</p>
-                <div class="d-md-flex text-white">
-                  <ul class="footer-nav fs-6">
-                    <li class="mb-3">
-                      <NuxtLink to="/posts">Blog</NuxtLink>
-                    </li>
-                    <li class="mb-3">
-                      <NuxtLink to="/courses">Courses</NuxtLink>
-                    </li>
-                    <li class="mb-3">
-                      <NuxtLink to="/books">Books</NuxtLink>
-                    </li>
-                    <li class="mb-3">
-                      <NuxtLink to="/">Hubs</NuxtLink>
-                    </li>
-                    <li>
-                      <a
-                        href="https://store.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
-                        >Our Store</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col-md-3 text-col">
-                <p class="mb-4">Products</p>
-                <div class="d-md-flex text-white">
-                  <ul class="footer-nav fs-6">
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
-                        >MB Platform</a
-                      >
-                    </li>
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        :href="`https://playground.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
-                        >Code Playground</a
-                      >
-                    </li>
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        :href="`https://getbackendjobs.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
-                        >Get Backend Jobs</a
-                      >
-                    </li>
-
-                    <li class="mb-3">
-                      <a target="_blank" href="#">Backend Interview Preps</a>
-                    </li>
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        href="https://projects.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
-                        >Access 200+ Backend Projects</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col-md-3 text-col">
-                <p class="mb-4">Join</p>
-                <div class="d-md-flex text-white">
-                  <ul class="footer-nav fs-6">
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
-                        >Learn Backend Free</a
-                      >
-                    </li>
-                    <li class="mb-3">
-                      <NuxtLink to="/newsletter">Join Our Newsletter</NuxtLink>
-                    </li>
-                    <li class="mb-3">
-                      <nuxt-link to="/community">Join Our Community</nuxt-link>
-                    </li>
-
-                    <li class="mb-3">
-                      <nuxt-link to="/academy">Join The Academy </nuxt-link>
-                    </li>
-
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        href="https://backendweekly.dev/podcasts?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
-                        >Listen to GBE Podcast
-                      </a>
-                    </li>
-
-                    <li class="mb-3">
-                      <a
-                        target="_blank"
-                        href="https://masteringbackend.featurebase.app/?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
-                        >Add or Vote for the next Course
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col-md-3 text-col">
-                <p class="mb-4">Company</p>
-                <ul class="footer-nav fs-6">
-                  <li class="mb-3"><nuxt-link to="/">Home</nuxt-link></li>
-                  <li class="mb-3"><nuxt-link to="/about">About</nuxt-link></li>
-                  <li class="mb-3">
-                    <nuxt-link to="/contact">Contact</nuxt-link>
+                <ul class="space-y-3 text-[1.1rem] font-light">
+                  <li><NuxtLink to="/posts">Blog</NuxtLink></li>
+                  <li><NuxtLink to="/courses">Courses</NuxtLink></li>
+                  <li><NuxtLink to="/books">Books</NuxtLink></li>
+                  <li><NuxtLink to="/">Hubs</NuxtLink></li>
+                  <li>
+                    <a
+                      href="https://store.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                      >Our Store</a
+                    >
                   </li>
+                </ul>
+              </div>
+
+              <!-- Products -->
+              <div class="w-1/2 md:w-1/4 text-white">
+                <p class="mb-4">Products</p>
+                <ul class="space-y-3 text-[1.1rem] font-light">
+                  <li>
+                    <a
+                      target="_blank"
+                      :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
+                      >MB Platform</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      :href="`https://playground.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
+                      >Code Playground</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      :href="`https://getbackendjobs.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
+                      >Get Backend Jobs</a
+                    >
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Backend Interview Preps</a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://projects.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                      >Access 200+ Backend Projects</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Join -->
+              <div class="w-1/2 md:w-1/4 text-white mt-6 md:mt-0">
+                <p class="mb-4">Join</p>
+                <ul class="space-y-3 text-[1.1rem] font-light">
+                  <li>
+                    <a
+                      target="_blank"
+                      :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
+                      >Learn Backend Free</a
+                    >
+                  </li>
+                  <li>
+                    <NuxtLink to="/newsletter">Join Our Newsletter</NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink to="/community">Join Our Community</NuxtLink>
+                  </li>
+                  <li><NuxtLink to="/academy">Join The Academy</NuxtLink></li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://backendweekly.dev/podcasts?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                      >Listen to GBE Podcast</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://masteringbackend.featurebase.app/?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                      >Add or Vote for the next Course</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Company -->
+              <div class="w-1/2 md:w-1/4 text-white mt-6 md:mt-0">
+                <p class="mb-4">Company</p>
+                <ul class="space-y-3 text-[1.1rem] font-light">
+                  <li><NuxtLink to="/">Home</NuxtLink></li>
+                  <li><NuxtLink to="/about">About</NuxtLink></li>
+                  <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <hr />
 
-        <div class="d-md-flex align-items-center justify-content-between">
-          <div class="d-flex socia-links mb-3 align-items-center">
+        <hr class="border-gray-600 my-6" />
+
+        <!-- Bottom Section -->
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between"
+        >
+          <!-- Social Links -->
+          <div class="flex space-x-3 mb-3 md:mb-0">
             <a
               href="https://facebook.com/masteringbackend"
               aria-label="facebook"
             >
-              <div class="socia-link p-2">
-                <img
-                  class="img-fluid face"
-                  src="~/assets/img/facebook.png"
-                  alt=""
-                />
+              <div class="border border-gray-300 rounded-full p-2">
+                <img class="w-3 h-3" src="~/assets/img/facebook.png" alt="" />
               </div>
             </a>
             <a href="https://twitter.com/master_backend" aria-label="twitter">
-              <div class="socia-link p-2">
-                <img class="img-fluid" src="~/assets/img/twitter.png" alt="" />
+              <div class="border border-gray-300 rounded-full p-2">
+                <img class="w-3 h-3" src="~/assets/img/twitter.png" alt="" />
               </div>
             </a>
             <a href="https://instagram.com/kaperskyguru" aria-label="instagram">
-              <div class="socia-link p-2">
-                <img
-                  class="img-fluid"
-                  src="~/assets/img/instagram.png"
-                  alt=""
-                />
+              <div class="border border-gray-300 rounded-full p-2">
+                <img class="w-3 h-3" src="~/assets/img/instagram.png" alt="" />
               </div>
             </a>
           </div>
 
+          <!-- Copyright -->
           <div>
-            <small class="text-light fs-7"
-              >© {{ new Date().getFullYear() }} Masteringbackend. All right
+            <small class="text-white/70 text-sm"
+              >© {{ new Date().getFullYear() }} Masteringbackend. All rights
               reserved.</small
             >
           </div>
         </div>
-        <div class="col-md-8">
-          <div>
-            <nuxt-link to="/terms-and-conditions"
-              >Terms and Conditions</nuxt-link
-            >
-            |&nbsp;
-            <nuxt-link to="/privacy-policy">Privacy</nuxt-link>
-            |&nbsp;
-            <nuxt-link to="/disclaimer">Disclaimer</nuxt-link>
-            |&nbsp;
-            <nuxt-link to="/return-policy">Return Policy</nuxt-link>
-            <!-- |&nbsp;
-            <nuxt-link to="#" @click.prevent="showLogin = !showLogin">Login</nuxt-link>
-            |&nbsp;
-            <nuxt-link to="#" @click.prevent="showRegister = !showRegister"
-              >Register</a
-            > -->
-          </div>
+
+        <!-- Links -->
+        <div class="mt-4 text-sm">
+          <nuxt-link to="/terms-and-conditions">Terms and Conditions</nuxt-link>
+          |&nbsp;
+          <nuxt-link to="/privacy-policy">Privacy</nuxt-link>
+          |&nbsp;
+          <nuxt-link to="/disclaimer">Disclaimer</nuxt-link>
+          |&nbsp;
+          <nuxt-link to="/return-policy">Return Policy</nuxt-link>
         </div>
 
-        <small
+        <!-- Recaptcha -->
+        <small class="block mt-4 text-white/70"
           >This site is protected by reCAPTCHA and the Google
-          <a href="https://policies.google.com/privacy">Privacy Policy</a>
+          <a class="underline" href="https://policies.google.com/privacy"
+            >Privacy Policy</a
+          >
           and
-          <a href="https://policies.google.com/terms">Terms of Service</a>
-          apply.
-        </small>
+          <a class="underline" href="https://policies.google.com/terms"
+            >Terms of Service</a
+          >
+          apply.</small
+        >
       </div>
     </footer>
   </div>
@@ -220,66 +198,8 @@ export default {
 </script>
 
 <style scoped>
-footer {
-  background: #05041b;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.6rem;
-  font-weight: normal;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
 footer ul {
   list-style-type: none;
   padding-left: 0;
-}
-
-footer .email {
-  color: #fff;
-  opacity: 70%;
-}
-
-.text-col p {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 300;
-}
-
-footer .footer-nav:nth-of-type(2) {
-  margin-left: 20px;
-}
-
-footer .socia-link {
-  border: 1px solid #e5e5e5;
-  border-radius: 50%;
-}
-
-footer .socia-link img {
-  width: 12px;
-  height: 12px;
-  color: #fff;
-  opacity: 90%;
-}
-
-footer .socia-link .face {
-  width: 11px;
-  height: 11px;
-  font-weight: 300;
-}
-
-footer .text-light {
-  font-size: 0.8rem;
-}
-
-footer small {
-  color: #fff;
-  opacity: 70%;
-}
-
-footer .footer-nav:nth-of-type(2) {
-  margin-left: 0;
 }
 </style>

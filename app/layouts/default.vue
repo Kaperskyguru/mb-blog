@@ -1,28 +1,31 @@
 <template>
-  <main style="background-color: #f7f5fa; width: 100% !important">
+  <main class="bg-[#f7f5fa] w-full">
     <div class="project30">
       <h2
-        class="pt-2 justify-center gap-1.5 text-xs font-medium text-black text-base"
-        style="font-size: 1rem; font-weight: bold"
+        class="pt-2 flex justify-center items-center gap-1.5 text-base font-bold text-black"
       >
         Unlock Your Python Backend Career: Build 30 Projects in 30 Days.
 
         <a
-          class="justify-center gap-1.5 rounded bg-black px-2 py-0.5 text-sm text-xs fw-medium uppercase tracking-wide text-white px-sm-3 py-sm-1"
+          class="ml-2 flex justify-center items-center gap-1.5 rounded bg-black px-3 py-2 text-xs font-medium uppercase tracking-wide !text-white"
           target="_blank"
           href="https://python30.masteringbackend.com?ref=masteringbackend"
-          >Join now for just $54</a
         >
+          Join now for just $54
+        </a>
       </h2>
     </div>
+
     <header>
       <Nav />
     </header>
+
     <slot class="pb-5" />
 
     <Footer />
   </main>
 </template>
+
 
 <script>
 export default {

@@ -1,27 +1,26 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div>
+    <!-- Free content -->
     <article
+      ref="article"
       v-if="!ispremium"
       data-clarity-region="article"
-      class="w-100"
+      class="w-full leading-loose font-light"
       v-html="content"
     ></article>
 
-    <span
-      v-else
-      class="w-100"
-      style="display: inline-block; position: relative"
-    >
-      <div class="overlay p-3 d-flex align-items-center justify-content-center">
+    <!-- Premium overlay -->
+    <span v-else class="w-full inline-block relative">
+      <div class="overlay p-3 flex items-center justify-center">
         <div class="text-center text-white mt-4">
           <div
-            class="position-relative"
-            :style="{ backgroundColor: '#5227AD', padding: '5rem' }"
             id="notify"
+            class="relative"
+            :style="{ backgroundColor: '#5227AD', padding: '5rem' }"
           >
-            <h3 class="fs-2 py-4">Don't Stop Learning</h3>
-            <h6 class="fs-5 text-white">
+            <h3 class="text-2xl py-4">Don't Stop Learning</h3>
+            <h6 class="text-lg text-white">
               Continue reading the {{ title }} for ${{ price }} only or Get
               instant access to all current and upcoming courses and content
               through subscription.
@@ -38,10 +37,12 @@
           </div>
         </div>
       </div>
-      <div class="row g-3">
+
+      <div class="grid gap-3">
         <article
+          ref="article"
           data-clarity-region="article"
-          class="w-100"
+          class="w-full"
           v-html="content"
         ></article>
       </div>
@@ -53,27 +54,29 @@
         <h3>Don't Stop Learning</h3>
 
         <div class="py-3">
+          <!-- Continue Reading Option -->
           <div
-            class="w-100 p-2 my-4 d-flex hover justify-content-center align-items-center"
-            :class="{ active: showPremiumContent }"
+            class="w-full p-2 my-4 flex justify-center items-center hover:cursor-pointer"
+            :class="{ 'bg-gray-100': showPremiumContent }"
             @click="openPremiumContent"
           >
-            <div class="ps-2">
+            <div class="pl-2">
               <h4>Continue reading</h4>
-              <p class="fs-6">
+              <p class="text-sm">
                 Continue reading the "{{ title }}" for ${{ price }} only
               </p>
             </div>
           </div>
 
+          <!-- Subscription Option -->
           <div
-            class="w-100 p-2 my-4 hover d-flex justify-content-center align-items-center"
-            :class="{ active: showSubscription }"
+            class="w-full p-2 my-4 flex justify-center items-center hover:cursor-pointer"
+            :class="{ 'bg-gray-100': showSubscription }"
             @click="openSubscription"
           >
-            <div class="ps-2">
+            <div class="pl-2">
               <h4>Monthly Subscription</h4>
-              <p class="fs-6">
+              <p class="text-sm">
                 Get instant access to all current and upcoming courses and
                 content through subscription.
               </p>
@@ -81,18 +84,18 @@
           </div>
         </div>
 
-        <div class="w-100">
-          <!-- <LearnerIcon class="mw-100" /> -->
+        <div class="w-full">
+          <!-- <LearnerIcon class="max-w-full" /> -->
         </div>
       </template>
 
       <template #right>
-        <!-- Unlock -->
+        <!-- Unlock Premium Content -->
         <span v-if="showPremiumContent">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="w-100 px-2" style="max-width: fit-content">
+          <div class="flex justify-center items-center">
+            <div class="w-full px-2 max-w-fit">
               <h4>Unlock Advanced Chapters</h4>
-              <p class="fs-6 my-4" v-html="chapterContent"></p>
+              <p class="text-sm my-4" v-html="chapterContent"></p>
             </div>
           </div>
 
@@ -100,7 +103,7 @@
             <Button
               appearance="purple"
               type="button"
-              class="col-12 py-3 my-2 fw-bold"
+              class="w-full py-3 my-2 font-bold"
               @click.prevent="unlock"
             >
               Unlock now for ${{ price }}
@@ -108,16 +111,16 @@
           </div>
         </span>
 
-        <!-- Subscription -->
+        <!-- Subscription Content -->
         <span v-if="showSubscription">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="w-100 px-2" style="max-width: fit-content">
+          <div class="flex justify-center items-center">
+            <div class="w-full px-2 max-w-fit">
               <h4>Own your backend journey</h4>
-              <p class="fs-6 my-4">
+              <p class="text-sm my-4">
                 Get instant access to all current and upcoming courses and
                 content through subscription.
               </p>
-              <ul>
+              <ul class="list-disc pl-5 text-left space-y-1">
                 <li>Personal Backend Portfolio to showcase your skills</li>
                 <li>Learn to build from Thousands Real-world Projects</li>
                 <li>Track your learnings and set schedules</li>
@@ -141,7 +144,7 @@
             <Button
               appearance="purple"
               type="button"
-              class="col-12 py-3 my-2 fw-bold"
+              class="w-full py-3 my-2 font-bold"
               @click.prevent="subscribe"
             >
               Subscribe Now
@@ -153,7 +156,10 @@
   </div>
 </template>
 
+
 <script setup>
+import hljs from 'highlight.js'
+import 'highlight.js/styles/night-owl.css'
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter, useRuntimeConfig } from '#imports'
 import Segment from '../helpers/segment'
@@ -166,6 +172,8 @@ import {
   PREMIUM_UNLOCK_FAILED,
   PREMIUM_SUBSCRIPTION,
 } from '../helpers/enum'
+
+const article = ref('')
 
 // Props
 const props = defineProps({
@@ -269,11 +277,13 @@ onMounted(() => {
   }
   // eslint-disable-next-line no-undef
   Paddle.Setup({ vendor: Number(config.public.PADDLE_VENDOR) })
+
+  const blocks = article.value?.querySelectorAll('pre code')
+  blocks.forEach((block) => hljs.highlightElement(block))
 })
 
 // Helpers (rewritten without Vue.extend)
 function displayCustomCodeHighlighter() {
-  if (props.chapter) return
   document.querySelectorAll('article pre').forEach((element) => {
     const wrapper = document.createElement('div')
     const header = document.createElement('div')
