@@ -217,13 +217,7 @@ export default defineNuxtConfig({
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
-    dirs: [
-      // '~/components/atoms',
-      // '~/components/molecules',
-      // '~/components/organisms',
-      // '~/components/templates',
-      '~/components/hubs',
-    ],
+    dirs: ['~/components'],
   },
   dir: {
     app: 'app',

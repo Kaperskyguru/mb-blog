@@ -11,6 +11,21 @@ export const color = (color) => {
   return mixedColor
 }
 
+export function adjustColor(color, amount) {
+  if (!color.startsWith('#')) return '#4f57ff'
+  return (
+    '#' +
+    color
+      .replace(/^#/, '')
+      .replace(/../g, (c) =>
+        (
+          '0' +
+          Math.min(255, Math.max(0, parseInt(c, 16) + amount)).toString(16)
+        ).slice(-2)
+      )
+  )
+}
+
 export const resolveChapters = (chapters) => {
   return chapters?.map((chapter) => {
     return {

@@ -283,7 +283,7 @@ article ol {
   margin-bottom: 1.3rem;
 }
 
-.pmpro-no-access article {
+.pmpronoaccess article {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
