@@ -131,7 +131,7 @@ const displayNewsletter = () => {
 }
 
 onMounted(() => {
-  displayNewsletter()
+  // displayNewsletter()
 })
 
 // -------------------- Utilities --------------------
