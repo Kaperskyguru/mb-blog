@@ -19,7 +19,9 @@
         </div>
 
         <!-- Content + Image -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-10">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-10 max-w-5xl container mx-auto"
+        >
           <div>
             <article class="w-full prose prose-invert" v-html="content" />
           </div>
