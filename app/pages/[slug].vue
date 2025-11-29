@@ -36,6 +36,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/post'
 import utils from '../helpers/utils'
+import InlineNewsletter from '@/components/InlineNewsletter.vue'
 
 // -------------------- Store & Route --------------------
 const postStore = usePostStore()
