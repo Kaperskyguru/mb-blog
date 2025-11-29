@@ -33,7 +33,7 @@
         </div>
 
         <!-- Cover Image -->
-        <figure class="w-full">
+        <figure class="w-full relative">
           <img
             id="cover"
             class="w-full h-auto rounded-lg shadow-md"
